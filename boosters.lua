@@ -23,14 +23,14 @@ SMODS.Booster{
     end,
     group_key = 'k_l6_legendspack',
     cost = 4,
-    weight = 0.2,
+    weight = 0.1,
     atlas = "LLBooster",
     pos = {x = 0, y = 0},
     create_card = function(self, card, i)
 
         local weight = pseudorandom(pseudoseed('legends'))
         
-        if weight <= 0.25 then
+        if weight <= 0.2 then
             return SMODS.create_card({ set = 'Joker', area = G.jokers, legendary = true })
         else
             return SMODS.create_card ({ set = 'Joker', area = G.jokers, rarity = 1 })
@@ -56,14 +56,14 @@ SMODS.Booster{
     end,
     group_key = 'k_l6_legendspack',
     cost = 4,
-    weight = 0.2,
+    weight = 0.1,
     atlas = "LLBooster",
     pos = {x = 1, y = 0},
     create_card = function(self, card, i)
 
         local weight = pseudorandom(pseudoseed('legends'))
         
-        if weight <= 0.25 then
+        if weight <= 0.2 then
             return SMODS.create_card({ set = 'Joker', area = G.jokers, legendary = true })
         else
             return SMODS.create_card ({ set = 'Joker', area = G.jokers, rarity = 1 })
@@ -89,14 +89,14 @@ SMODS.Booster{
     end,
     group_key = 'k_l6_legendspack',
     cost = 6,
-    weight = 0.15,
+    weight = 0.03,
     atlas = "LLBooster",
     pos = {x = 2, y = 0},
     create_card = function(self, card, i)
 
         local weight = pseudorandom(pseudoseed('legends'))
         
-        if weight <= 0.25 then
+        if weight <= 0.2 then
             return SMODS.create_card({ set = 'Joker', area = G.jokers, legendary = true })
         else
             return SMODS.create_card ({ set = 'Joker', area = G.jokers, rarity = 1 })
