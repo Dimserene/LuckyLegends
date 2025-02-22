@@ -153,7 +153,6 @@ SMODS.Joker{
 
 -- ZACH/ZOEY -- 
 
-
 SMODS.Joker{
 
     key = 'zach',
@@ -286,6 +285,81 @@ SMODS.Joker{
     end
 }
 
+-- MOLLY --
+
+SMODS.Joker{
+
+    key = 'molly',
+    atlas = "LLJoker",
+    pos = {x = 0, y = 2},
+    soul_pos = {x = 0, y = 3},
+    config = { extra = { retriggers = 2 }},
+    rarity = 4,
+    cost = 20,
+    eternal_compat = false,
+    blueprint_compat = true,
+
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+        return {
+            vars = { card.ability.extra.retriggers, colours = {G.C.DARK_EDITION} } 
+        }
+    end,
+
+    set_badges = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+    end,
+
+    calculate = function(self, card, context)
+        if context.repetition and not context.repetition_only and context.cardarea == G.play then
+            if context.other_card.edition and (context.other_card.edition.holo or context.other_card.edition.polychrome) then
+                return {
+                    message = localize('k_again_ex'),
+                    repetitions = card.ability.extra.retriggers,
+                    card = context.other_card
+                }
+            end
+        end
+    end
+}
+
+-- KIM --
+
+SMODS.Joker {
+    key = 'kim',
+    unlocked = true,
+    config = { extra = { xmult = 1, xmult_mod = 1 } },
+    rarity = 2,
+    atlas = "LLJoker",
+    pos = { x = 1, y = 2 },
+    soul_pos = {x = 1, y = 3},
+    cost = 20,
+    blueprint_compat = true,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
+    end,
+    set_badges = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main and card.ability.extra.xmult > 1 then
+            return {
+                Xmult_mod = card.ability.extra.xmult,
+                message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
+            }
+        elseif context.destroy_card and context.cardarea == G.play then
+            if context.destroy_card.config.center == G.P_CENTERS.m_steel or context.destroy_card.config.center == G.P_CENTERS.m_gold then
+                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+                return {
+                    message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
+                    remove = true
+                }
+            end
+        end
+    end
+}
+
 -- FUNCS/HOOKS --
 
 -- game init hook
@@ -320,3 +394,25 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
     G.GAME.current_round.l6_dex.hand = pseudorandom_element(_poker_hands, pseudoseed('dex_hand'))
 end
+
+
+-- SMODS.Joker {
+--     key = 'jimbo',
+--     unlocked = true,
+--     config = { extra = { } },
+--     rarity = 2,
+--     atlas = "LLJoker",
+--     pos = { x = 0, y = 0 },
+--     soul_pos = {x = 0, y = 1},
+--     cost = 20,
+--     blueprint_compat = true,
+--     loc_vars = function(self, info_queue, card)
+--         return { vars = { } }
+--     end,
+--     set_badges = function(self, card, badges)
+--         badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+--     end,
+--     calculate = function(self, card, context)
+--
+--     end
+-- }

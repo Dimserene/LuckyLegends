@@ -1,7 +1,7 @@
 {
 	"id": "luckylegends",	
 	"name": "Lucky Legends - Volume I",
-	"author": ["Lucky6"],
+	"author": ["LuckySix"],
 	"description": "The gang's all here! 15 Legendary Jokers and Legends Booster Packs!",
 	"prefix": "l6_luckylegends",
 	"main_file": "main.lua",
@@ -11,7 +11,7 @@
 	"display_name": "Lucky Legends I",
 	"version": "0.1.0~alpha-1",
 	"dependencies": [
-		"Steamodded (>=1.0.0~ALPHA-1421b-STEAMODDED)",
+		"Steamodded (>=1.0.0~ALPHA-1421b)",
 		"Lovely (>=0.6)",
 	],
 }

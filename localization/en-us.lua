@@ -7,8 +7,8 @@ return {
                 name = "Dex",
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult if",
-                    "first played hand of round",
-                    "is a {C:attention}#2#{}",
+                    "first hand is a {C:attention}#2#{}",
+                    "{s:0.8}Hand changes every round",
                     "{C:inactive}Currently {X:mult,C:white}X#3#{} {C:inactive}Mult",
                     "{s:0.8,C:inactive}Comin' in hot!"
                 }
@@ -50,6 +50,25 @@ return {
                     "turned into a {C:attention}Queen{}",
                     "{C:inactive}Currently {X:mult,C:white}X#2#{} {C:inactive}Mult",
                     "{s:0.8,C:inactive}I found you. I found... me."
+                }
+            },
+            j_l6_luckylegends_molly = {
+                name = "Molly",
+                text = {
+                    "{V:1}Holographic{} and {V:1}Polychrome{}",
+                    "{C:attention}playing cards{} are retriggered",
+                    "{C:attention}#1#{} additional times",
+                    "{s:0.8,C:inactive}Young, wild, and queer!"
+                }
+            },
+            j_l6_luckylegends_kim = {
+                name = "Kim",
+                text = {
+                    "Played {C:attention}Steel{} and {C:attention}Gold{} cards",
+                    "are destroyed",
+                    "Gains {X:mult,C:white}X#2#{} Mult per card destroyed",
+                    "{C:inactive}Currently {}{X:mult,C:white}X#1#{} {C:inactive}Mult{}",
+                    "{s:0.8,C:inactive}Burn it all down."
                 }
             }
         },
