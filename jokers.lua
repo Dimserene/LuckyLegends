@@ -329,7 +329,7 @@ SMODS.Joker{
 SMODS.Joker {
     key = 'kim',
     unlocked = true,
-    config = { extra = { xmult = 1, xmult_mod = 1 } },
+    config = { extra = { xmult = 1, xmult_mod = 1, upgraded = false } },
     rarity = 2,
     atlas = "LLJoker",
     pos = { x = 1, y = 2 },
@@ -348,14 +348,19 @@ SMODS.Joker {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
             }
-        elseif context.destroy_card and context.cardarea == G.play then
+        elseif context.destroy_card and context.cardarea == G.play and not context.blueprint then
             if context.destroy_card.config.center == G.P_CENTERS.m_steel or context.destroy_card.config.center == G.P_CENTERS.m_gold then
+                card.ability.extra.upgraded = true
                 card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
                 return {
-                    message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}},
                     remove = true
                 }
             end
+        elseif context.after and not context.blueprint and card.ability.extra.upgraded then
+            card.ability.extra.upgraded = false
+            return {
+                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
+            }
         end
     end
 }

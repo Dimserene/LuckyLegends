@@ -64,9 +64,9 @@ return {
             j_l6_luckylegends_kim = {
                 name = "Kim",
                 text = {
-                    "Played {C:attention}Steel{} and {C:attention}Gold{} cards",
-                    "are destroyed",
-                    "Gains {X:mult,C:white}X#2#{} Mult per card destroyed",
+                    "Destroys {C:attention}Steel{} and {C:attention}Gold{} cards",
+                    "Gains {X:mult,C:white}X#2#{} Mult",
+                    "per card destroyed",
                     "{C:inactive}Currently {}{X:mult,C:white}X#1#{} {C:inactive}Mult{}",
                     "{s:0.8,C:inactive}Burn it all down."
                 }
