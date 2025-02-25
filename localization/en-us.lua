@@ -70,6 +70,16 @@ return {
                     "{C:inactive}Currently {}{X:mult,C:white}X#1#{} {C:inactive}Mult{}",
                     "{s:0.8,C:inactive}Burn it all down."
                 }
+            },
+            j_l6_luckylegends_alexia = {
+                name = "Alexia",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult for every",
+                    "scored {C:attention}5{} and {C:attention}6{}",
+                    "Gains {X:mult,C:white}X#2#{} Mult when any",
+                    "{C:attention}Lucky Legends{} Joker is added",
+                    "{s:0.8,C:inactive}I love my friends!"
+                }
             }
         },
         Other = {
@@ -111,7 +121,8 @@ return {
             k_l6_source_ocpoke = 'Pokémon OC',
             k_l6_source_panda = 'apandah youtube dot com',
             k_l6_zach_crack = 'Crack!',
-            k_l6_zach_safe = 'Nah.'
+            k_l6_zach_safe = 'Nah.',
+            k_l6_alexia_upgrade = 'Friend!'
         }
     }
 }
