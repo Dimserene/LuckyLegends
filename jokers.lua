@@ -343,6 +343,8 @@ SMODS.Joker {
     cost = 20,
     blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
     end,
     set_badges = function(self, card, badges)
@@ -384,7 +386,7 @@ SMODS.Joker {
     cost = 20,
     blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, colours = { L6GLOBALS.C.secondary } } }
     end,
     set_badges = function(self, card, badges)
         badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
@@ -417,23 +419,63 @@ SMODS.Joker {
 -- SASHA --
 
 SMODS.Joker {
-    key = 'jimbo',
+    key = 'sasha',
     unlocked = true,
-    config = { extra = { } },
+    config = { extra = { xmult = 1, xmult_mod = 0.1 } },
     rarity = 4,
     atlas = "LLJoker",
-    pos = { x = 0, y = 0 },
-    soul_pos = {x = 0, y = 1},
+    pos = { x = 3, y = 2 },
+    soul_pos = {x = 3, y = 3},
     cost = 20,
     blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
-        return { vars = { } }
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, colours = { G.C.SECONDARY_SET.Tarot, G.C.SECONDARY_SET.Planet, G.C.SECONDARY_SET.Spectral, G.C.SECONDARY_SET.Joker } } }
+    end,
+    set_badges = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_okame'), G.C.BLUE, G.C.WHITE, 0.8)
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main and card.ability.extra.xmult > 1 then
+            return {
+                Xmult_mod = card.ability.extra.xmult,
+                message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
+            }
+        end
+    end,
+    update = function(self, card, dt)
+        if G.GAME.l6_cards_seen then
+            card.ability.extra.xmult = 1 + (#G.GAME.l6_cards_seen * card.ability.extra.xmult_mod)
+        end
+    end
+}
+
+-- JONAH --
+
+SMODS.Joker {
+    key = 'jonah',
+    unlocked = true,
+    config = { extra = { money = 10 } },
+    rarity = 4,
+    atlas = "LLJoker",
+    pos = { x = 4, y = 2 },
+    soul_pos = {x = 4, y = 3},
+    cost = 20,
+    blueprint_compat = true,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.money, colours = {G.C.GOLD} } }
     end,
     set_badges = function(self, card, badges)
         badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
-
+        if context.individual and context.other_card and not context.end_of_round then
+            local id = context.other_card:get_id()
+            if id == 11 or id == 13 then
+                return {
+                    dollars = card.ability.extra.money
+                }
+            end
+        end
     end
 }
 
@@ -444,8 +486,8 @@ local igo = Game.init_game_object
 function Game:init_game_object()
     local ret = igo(self)
     ret.current_round.l6_dex = {hand = "High Card"}
-    ret.l6_pool_flags.l6_zoey_nat_spawn = false
-    ret.cards_seen = {}
+    ret.pool_flags.l6_zoey_nat_spawn = false
+    ret.l6_cards_seen = {}
     return ret
 end
 
@@ -464,31 +506,44 @@ function Card:set_base(card, initial)
     end
 end
 
--- emplace joker context hook (for alexia)
+-- emplace hook (joker added context & cards seen table update)
 local empl = CardArea.emplace
 function CardArea.emplace(self, card, location, stay_flipped)
     empl(self, card, location, stay_flipped)
+
+    if (not self.config.collection) and G.GAME.l6_cards_seen then
+        if card.ability.set == 'Tarot' or card.ability.set == 'Spectral' or card.ability.set == 'Planet' or card.ability.set == 'Joker' then
+
+            local isFound = false
+            for _, c in pairs(G.GAME.l6_cards_seen) do
+                if c == card.ability.name then isFound = true break end
+            end
+
+            if not isFound then
+                -- print(card.ability.name)
+                table.insert(G.GAME.l6_cards_seen, card.ability.name)
+            end
+
+        end
+    end
+
     if self == G.jokers then
         local effects
         SMODS.calculate_context({l6_joker_added = card}, effects)
     end
+
 end
 
--- reset_game_globals (for dex mainly)
+-- reset_game_globals
 function SMODS.current_mod.reset_game_globals(run_start)
-    local _poker_hands = {}
+    local poker_hands = {}
     for k, v in pairs(G.GAME.hands) do
-        if v.visible then _poker_hands[#_poker_hands+1] = k end
+        if v.visible then poker_hands[#poker_hands+1] = k end
     end
-    G.GAME.current_round.l6_dex.hand = pseudorandom_element(_poker_hands, pseudoseed('dex_hand'))
-end
+    G.GAME.current_round.l6_dex.hand = pseudorandom_element(poker_hands, pseudoseed('dex_hand'))
 
--- set ability hook (for sasha)
-local seta = Card.set_ability
-function Card:set_ability(center, initial, delay_sprites)
-    seta(self, center, initial, delay_sprites)
-    if not card.area.config.collection then
-        
+    if run_start then
+        G.GAME.l6_cards_seen = {} -- reset seen cards so it doesn't carry into future runs
     end
 end
 

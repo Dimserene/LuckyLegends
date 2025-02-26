@@ -64,9 +64,9 @@ return {
             j_l6_luckylegends_kim = {
                 name = "Kim",
                 text = {
-                    "Destroys {C:attention}Steel{} and {C:attention}Gold{} cards",
-                    "Gains {X:mult,C:white}X#2#{} Mult",
-                    "per card destroyed",
+                    "Destroys scored {C:attention}Steel{}",
+                    "and {C:attention}Gold{} cards",
+                    "Gains {X:mult,C:white}X#2#{} Mult per card destroyed",
                     "{C:inactive}Currently {}{X:mult,C:white}X#1#{} {C:inactive}Mult{}",
                     "{s:0.8,C:inactive}Burn it all down."
                 }
@@ -77,8 +77,36 @@ return {
                     "{X:mult,C:white}X#1#{} Mult for every",
                     "scored {C:attention}5{} and {C:attention}6{}",
                     "Gains {X:mult,C:white}X#2#{} Mult when any",
-                    "{C:attention}Lucky Legends{} Joker is added",
+                    "{V:1}Lucky Legends{} Joker is added",
                     "{s:0.8,C:inactive}I love my friends!"
+                }
+            },
+            j_l6_luckylegends_sasha = {
+                name = "Sasha",
+                text = {
+                    "This Joker gains {X:mult,C:white}X#2#{} Mult for",
+                    "every {V:1}Tarot{}, {V:2}Planet{}, {V:3}Spectral{}",
+                    "and {V:4}Joker{} card {C:attention}seen{} this run {C:inactive}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+                    "{s:0.8,C:inactive}I wanna see the world..."
+                }
+            },
+            j_l6_luckylegends_jonah = {
+                name = "Jonah",
+                text = {
+                    "{C:attention}Kings{} and {C:attention}Jacks{} give",
+                    "{V:1}$#1#{} when scored",
+                    "or held in hand when scoring",
+                    "{s:0.8,C:inactive}God's freakiest soldier."
+                }
+            }
+        },
+        Tag = {
+            tag_l6_luckylegends_legends = {
+                name = "Legends Tag",
+                text = {
+                    "Gives a free",
+                    "{V:1}Mega Legends Pack"
                 }
             }
         },
@@ -115,14 +143,18 @@ return {
     },
     misc = {
         dictionary = {
+
             k_l6_legendspack = 'Legends Pack',
+
             k_l6_source_oc = 'OC',
             k_l6_source_okame = 'Instagram @0kame_san',
-            k_l6_source_ocpoke = 'Pokémon OC',
+            k_l6_source_ocpoke = 'Pokémon (OC)',
             k_l6_source_panda = 'apandah youtube dot com',
+
             k_l6_zach_crack = 'Crack!',
             k_l6_zach_safe = 'Nah.',
             k_l6_alexia_upgrade = 'Friend!'
+
         }
     }
 }
