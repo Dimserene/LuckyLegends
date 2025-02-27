@@ -142,6 +142,14 @@ return {
         },
     },
     misc = {
+        challenge_names = {
+            c_l6_luckylegends_legends = 'Legends Challenge'
+        },
+        v_text = {
+            ch_c_l6_eternal_rares_legendaries = {'All Rare and Legendary Jokers are Eternal (if compatible)'},
+            ch_c_l6_score_req_multiplier =  {'Score requirements multiplied by x2'},
+            ch_c_l6_random_legends_joker_start = {'Start with a random Lucky Legends Joker'}
+        },
         dictionary = {
 
             k_l6_legendspack = 'Legends Pack',
@@ -150,6 +158,7 @@ return {
             k_l6_source_okame = 'Instagram @0kame_san',
             k_l6_source_ocpoke = 'Pokémon (OC)',
             k_l6_source_panda = 'apandah youtube dot com',
+            k_l6_source_tism = 'im autistic af lmaoo',
 
             k_l6_zach_crack = 'Crack!',
             k_l6_zach_safe = 'Nah.',

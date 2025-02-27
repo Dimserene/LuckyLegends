@@ -479,6 +479,47 @@ SMODS.Joker {
     end
 }
 
+-- MARCO --
+
+SMODS.Joker {
+    key = 'marco',
+    unlocked = true,
+    config = { extra = { xmult = 1, xmult_mod = 0.25 } },
+    rarity = 4,
+    atlas = "LLJoker",
+    pos = { x = 0, y = 4 },
+    soul_pos = {x = 0, y = 5},
+    cost = 20,
+    blueprint_compat = true,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { } }
+    end,
+    set_badges = function(self, card, badges)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_ocpoke'), G.C.BLUE, G.C.WHITE, 0.8)
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main and card.ability.extra.xmult > 1 then
+            return {
+                Xmult_mod = card.ability.extra.xmult,
+                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
+            }
+        end
+    end,
+    update = function (self, card, dt)
+        if G.playing_cards then
+            local hearts = 0
+            for i, c in ipairs(G.playing_cards) do
+                if c:is_suit('Hearts') then
+                    hearts = hearts + 1
+                end
+            end
+            card.ability.extra.xmult = 1 + (hearts * card.ability.extra.xmult_mod)
+        else
+            card.ability.extra.xmult = 1
+        end
+    end
+}
+
 -- FUNCS/HOOKS --
 
 -- game init hook (for variables)
@@ -503,47 +544,6 @@ function Card:set_base(card, initial)
     if G.hand and self and self.base and old_card then
         local effects
         SMODS.calculate_context({l6_base_changed = true, l6_other_card = {id = self:get_id(), suit = self.base.suit}, l6_old_card = old_card}, effects)
-    end
-end
-
--- emplace hook (joker added context & cards seen table update)
-local empl = CardArea.emplace
-function CardArea.emplace(self, card, location, stay_flipped)
-    empl(self, card, location, stay_flipped)
-
-    if (not self.config.collection) and G.GAME.l6_cards_seen then
-        if card.ability.set == 'Tarot' or card.ability.set == 'Spectral' or card.ability.set == 'Planet' or card.ability.set == 'Joker' then
-
-            local isFound = false
-            for _, c in pairs(G.GAME.l6_cards_seen) do
-                if c == card.ability.name then isFound = true break end
-            end
-
-            if not isFound then
-                -- print(card.ability.name)
-                table.insert(G.GAME.l6_cards_seen, card.ability.name)
-            end
-
-        end
-    end
-
-    if self == G.jokers then
-        local effects
-        SMODS.calculate_context({l6_joker_added = card}, effects)
-    end
-
-end
-
--- reset_game_globals
-function SMODS.current_mod.reset_game_globals(run_start)
-    local poker_hands = {}
-    for k, v in pairs(G.GAME.hands) do
-        if v.visible then poker_hands[#poker_hands+1] = k end
-    end
-    G.GAME.current_round.l6_dex.hand = pseudorandom_element(poker_hands, pseudoseed('dex_hand'))
-
-    if run_start then
-        G.GAME.l6_cards_seen = {} -- reset seen cards so it doesn't carry into future runs
     end
 end
 
