@@ -492,7 +492,7 @@ SMODS.Joker {
     cost = 20,
     blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
-        return { vars = { } }
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, colours = { G.C.SUITS['Hearts'] } } }
     end,
     set_badges = function(self, card, badges)
         badges[#badges + 1] = create_badge(localize('k_l6_source_ocpoke'), G.C.BLUE, G.C.WHITE, 0.8)

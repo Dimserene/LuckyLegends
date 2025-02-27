@@ -99,6 +99,15 @@ return {
                     "or held in hand when scoring",
                     "{s:0.8,C:inactive}God's freakiest soldier."
                 }
+            },
+            j_l6_luckylegends_marco = {
+                name = "Marco",
+                text = {
+                    "This Joker gives {X:mult,C:white}X#2#{} Mult",
+                    "for every {V:1}Heart{} card in deck",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+                    "{s:0.8,C:inactive}We all just want to be loved."
+                }
             }
         },
         Tag = {
