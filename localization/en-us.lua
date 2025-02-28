@@ -108,6 +108,42 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)",
                     "{s:0.8,C:inactive}We all just want to be loved."
                 }
+            },
+            j_l6_luckylegends_panda = {
+                name = "Panda",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if all owned",
+                    "Jokers are {V:2}Legendary{}",
+                    "{C:inactive}(Currently {}{V:1}#2#{}{C:inactive})",
+                    "{s:0.8,C:inactive}AG@&4TDHSYA!!?1@."
+                }
+            },
+            j_l6_luckylegends_cat = {
+                name = "Cat",
+                text = {
+                    "Played {C:attention}Lucky Cards{}",
+                    "{C:attention}always{} trigger",
+                    "{s:0.8,C:inactive}Meow."
+                }
+            },
+            j_l6_luckylegends_ken = {
+                name = "Ken",
+                text = {
+                    "Sell this Joker to immediately",
+                    "{C:attention}remove{} all {C:attention}stickers",
+                    "from every other owned Joker",
+                    "{s:0.8,C:inactive}Discipline is a key virtue."
+                }
+            },
+            j_l6_luckylegends_chris = {
+                name = "Chris",
+                text = {
+                    "All {V:1}Tarot{} and {V:2}Spectral{}",
+                    "cards and packs are {C:attention}free{}",
+                    "Creates a {V:3}Negative{} copy of",
+                    "{C:attention}The Fool{} at end of shop",
+                    "{s:0.8,C:inactive}Always glad to assist!"
+                }
             }
         },
         Tag = {
@@ -171,7 +207,11 @@ return {
 
             k_l6_zach_crack = 'Crack!',
             k_l6_zach_safe = 'Nah.',
-            k_l6_alexia_upgrade = 'Friend!'
+            k_l6_alexia_upgrade = 'Friend!',
+            k_l6_chris_spawn_fool = 'Here!',
+
+            k_l6_active = 'Active',
+            k_l6_inactive = 'Inactive'
 
         }
     }
