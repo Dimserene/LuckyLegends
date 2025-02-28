@@ -647,9 +647,10 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.ending_shop then
-            G.E_MANAGER.add_event(Event({
+            G.E_MANAGER:add_event(Event({
                 func = function ()
                     SMODS.add_card({set = 'Tarot', area = G.consumables, key = 'c_fool', edition = 'e_negative', skip_materialize = true})
+                    return true
                 end
             }))
             return {
