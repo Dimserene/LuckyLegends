@@ -22,7 +22,7 @@ SMODS.Booster{
         }
     end,
     group_key = 'k_l6_legendspack',
-    cost = 4,
+    cost = 15,
     weight = 0.1,
     atlas = "LLBooster",
     pos = {x = 0, y = 0},
@@ -55,7 +55,7 @@ SMODS.Booster{
         }
     end,
     group_key = 'k_l6_legendspack',
-    cost = 4,
+    cost = 15,
     weight = 0.1,
     atlas = "LLBooster",
     pos = {x = 1, y = 0},
@@ -88,7 +88,7 @@ SMODS.Booster{
         }
     end,
     group_key = 'k_l6_legendspack',
-    cost = 6,
+    cost = 18,
     weight = 0.03,
     atlas = "LLBooster",
     pos = {x = 2, y = 0},
@@ -121,7 +121,7 @@ SMODS.Booster{
         }
     end,
     group_key = 'k_l6_legendspack',
-    cost = 8,
+    cost = 22,
     weight = 0.15,
     atlas = "LLBooster",
     pos = {x = 3, y = 0},
