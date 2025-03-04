@@ -21,7 +21,11 @@ local legends_pool = {
     'j_l6_luckylegends_chris'
 }
 
--- FUNCS/HOOKS for jokers and challenge setup
+-- FUNCS/HOOKS
+
+to_big = to_big or function (value) -- for talisman compat
+    return value
+end
 
 -- reset_game_globals
 function SMODS.current_mod.reset_game_globals(run_start)
