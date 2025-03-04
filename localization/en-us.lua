@@ -208,7 +208,7 @@ return {
             k_l6_zach_crack = 'Crack!',
             k_l6_zach_safe = 'Nah.',
             k_l6_alexia_upgrade = 'Friend!',
-            k_l6_chris_spawn_fool = 'Here!',
+            k_l6_chris_spawn_fool = 'Take this!',
 
             k_l6_active = 'Active',
             k_l6_inactive = 'Inactive'

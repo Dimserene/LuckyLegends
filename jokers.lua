@@ -32,7 +32,7 @@ SMODS.Joker{
             return{
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
             }
-        elseif context.joker_main and card.ability.extra.xmult > 1 then
+        elseif context.joker_main and card.ability.extra.xmult > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
@@ -209,7 +209,7 @@ SMODS.Joker{
                     }
                 end
             end
-        elseif context.joker_main and card.ability.extra.xmult > 1 then
+        elseif context.joker_main and card.ability.extra.xmult > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
@@ -291,7 +291,7 @@ SMODS.Joker{
                     message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
                 }
             end
-        elseif context.joker_main and card.ability.extra.xmult > 1 then
+        elseif context.joker_main and card.ability.extra.xmult > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
@@ -360,7 +360,7 @@ SMODS.Joker {
         badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
-        if context.joker_main and card.ability.extra.xmult > 1 then
+        if context.joker_main and card.ability.extra.xmult > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
@@ -410,11 +410,9 @@ SMODS.Joker {
                 }
             end
         elseif context.l6_joker_added and not context.blueprint then
-            -- print('possible friend detected!')
             if not (context.l6_joker_added == card) then
                 local mod = context.l6_joker_added.config.center.mod
                 if mod and mod.id == 'luckylegends' then
-                    -- print("FRIEND!! :D")
                     card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
                     return {
                         message = localize('k_l6_alexia_upgrade')
@@ -444,7 +442,7 @@ SMODS.Joker {
         badges[#badges + 1] = create_badge(localize('k_l6_source_okame'), G.C.BLUE, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
-        if context.joker_main and card.ability.extra.xmult > 1 then
+        if context.joker_main and card.ability.extra.xmult > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
@@ -507,7 +505,7 @@ SMODS.Joker {
         badges[#badges + 1] = create_badge(localize('k_l6_source_ocpoke'), G.C.BLUE, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
-        if context.joker_main and card.ability.extra.xmult > 1 then
+        if context.joker_main and card.ability.extra.xmult > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
@@ -565,7 +563,7 @@ SMODS.Joker {
     update = function (self, card, dt)
         if G.jokers then
             card.ability.extra.active = true
-            for i, j in ipairs(G.jokers.cards) do
+            for _, j in ipairs(G.jokers.cards) do
                 if j.config.center.rarity < 4 then
                     card.ability.extra.active = false
                 end
