@@ -23,7 +23,7 @@ SMODS.Joker{
     end,
 
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
 
     calculate = function(self, card, context)
@@ -61,7 +61,7 @@ SMODS.Joker{
     end,
 
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
 
     calculate = function(self, card, context)
@@ -122,7 +122,7 @@ SMODS.Joker{
     end,
 
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
 
     calculate = function(self, card, context)
@@ -189,7 +189,7 @@ SMODS.Joker{
     end,
 
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
 
     calculate = function(self, card, context)
@@ -280,7 +280,7 @@ SMODS.Joker{
     end,
 
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
 
     calculate = function(self, card, context)
@@ -323,7 +323,7 @@ SMODS.Joker{
     end,
 
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
 
     calculate = function(self, card, context)
@@ -357,7 +357,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
     end,
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
         if context.joker_main and card.ability.extra.xmult > to_big(1) then
@@ -502,7 +502,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, colours = { G.C.SUITS['Hearts'] } } }
     end,
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_ocpoke'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_ocpoke'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
         if context.joker_main and card.ability.extra.xmult > to_big(1) then
@@ -549,7 +549,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.xmult, actext, colours = { accolor, G.C.RARITY[1] } } }
     end,
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_panda'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_panda'), L6.C.secondary, G.C.WHITE, 0.8)
         badges[#badges + 1] = create_badge(localize('k_l6_source_tism'), G.C.ORANGE, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
@@ -586,7 +586,7 @@ SMODS.Joker {
         info_queue[#info_queue+1] = G.P_CENTERS.m_lucky
     end,
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end
 }
 
@@ -602,7 +602,7 @@ SMODS.Joker {
     cost = 20,
     eternal_compat = false,
     set_badges = function(self, card, badges)
-        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), G.C.BLUE, G.C.WHITE, 0.8)
+        badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
         if context.selling_self and not context.blueprint then
