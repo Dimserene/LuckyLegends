@@ -89,22 +89,6 @@ function CardArea.emplace(self, card, location, stay_flipped)
     end
 end
 
--- lucky card calc change to work with cat
-SMODS.Enhancement:take_ownership('m_lucky',
-    {
-        calculate = function (self, card, context)
-            if context.main_scoring and context.cardarea == G.play then
-                local hascat = next(SMODS.find_card('j_l6_luckylegends_cat', false))
-                return 
-                    {
-                        dollars = (hascat or pseudorandom('lucky_money') < G.GAME.probabilities.normal/20) and 20 or nil,
-                        mult = (hascat or pseudorandom('lucky_mult') < G.GAME.probabilities.normal/5) and 20 or nil
-                    }
-            end
-        end
-    }
-)
-
 -- game init hook (for variables)
 local igo = Game.init_game_object
 function Game:init_game_object()
