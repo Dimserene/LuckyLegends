@@ -3,23 +3,7 @@ assert(SMODS.load_file('jokers.lua'))()
 assert(SMODS.load_file('boosters.lua'))()
 assert(SMODS.load_file('tags.lua'))()
 assert(SMODS.load_file('challenges.lua'))()
-
-local legends_pool = {
-    'j_l6_luckylegends_dex',
-    'j_l6_luckylegends_ty',
-    'j_l6_luckylegends_alex',
-    'j_l6_luckylegends_zach',
-    'j_l6_luckylegends_molly',
-    'j_l6_luckylegends_kim',
-    'j_l6_luckylegends_alexia',
-    'j_l6_luckylegends_sasha',
-    'j_l6_luckylegends_jonah',
-    'j_l6_luckylegends_marco',
-    'j_l6_luckylegends_panda',
-    'j_l6_luckylegends_cat',
-    'j_l6_luckylegends_ken',
-    'j_l6_luckylegends_chris'
-}
+assert(SMODS.load_file('back.lua'))()
 
 -- FUNCS/HOOKS
 
@@ -38,7 +22,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
     if run_start then
         G.GAME.l6_cards_seen = {} -- reset seen cards so it doesn't carry into future runs
         if G.GAME.modifiers['l6_random_legends_joker_start'] then -- add legends challenge starter joker
-            SMODS.add_card({set = 'Joker', area = G.jokers, key = pseudorandom_element(legends_pool, pseudoseed('legendsch'))})
+            SMODS.add_card({set = 'Joker', area = G.jokers, key = pseudorandom_element(L6.legends_pool, pseudoseed('legendsch'))})
         end
         if G.GAME.modifiers['l6_score_req_multiplier'] then -- set extra score scaling
             G.GAME.starting_params.ante_scaling = G.GAME.modifiers['l6_score_req_multiplier']

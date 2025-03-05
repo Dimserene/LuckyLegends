@@ -2,6 +2,16 @@
 
 return {
     descriptions = {
+        Back = {
+            b_l6_luckylegends_lucky = {
+                name = "Lucky's Deck",
+                text = {
+                    "Start with a random",
+                    "{V:1}Lucky Legends{} Joker",
+                    "{C:red}-1{} Joker slot"
+                }
+            }
+        },
         Joker = {
             j_l6_luckylegends_dex = {
                 name = "Dex",
@@ -112,8 +122,8 @@ return {
             j_l6_luckylegends_panda = {
                 name = "Panda",
                 text = {
-                    "{X:mult,C:white}X#1#{} Mult if all owned",
-                    "Jokers are {V:2}Legendary{}",
+                    "{X:mult,C:white}X#1#{} Mult if no",
+                    "{V:2}Common{} Jokers are owned",
                     "{C:inactive}(Currently {}{V:1}#2#{}{C:inactive})",
                     "{s:0.8,C:inactive}AG@&4TDHSYA!!?1@."
                 }
