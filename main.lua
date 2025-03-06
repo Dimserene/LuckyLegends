@@ -4,6 +4,7 @@ assert(SMODS.load_file('boosters.lua'))()
 assert(SMODS.load_file('tags.lua'))()
 assert(SMODS.load_file('challenges.lua'))()
 assert(SMODS.load_file('back.lua'))()
+assert(SMODS.load_file('sound.lua'))()
 
 -- FUNCS/HOOKS
 

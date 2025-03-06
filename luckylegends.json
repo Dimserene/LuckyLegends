@@ -11,7 +11,7 @@
 	"display_name": "Lucky Legends I",
 	"version": "0.1.0~alpha-1",
 	"dependencies": [
-		"Steamodded (>=1.0.0~ALPHA-1421b)",
+		"Steamodded (>=1.0.0~BETA-0305c)",
 		"Lovely (>=0.6)",
 	],
 }
