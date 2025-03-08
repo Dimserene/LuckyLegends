@@ -2,7 +2,7 @@
 	"id": "luckylegends",	
 	"name": "Lucky Legends - Volume I",
 	"author": ["LuckySix"],
-	"description": "The gang's all here! 15 Legendary Jokers and Legends Booster Packs!",
+	"description": "The gang's all here! 15 Legendary Jokers, Legends Booster Packs, and much more!",
 	"prefix": "l6_luckylegends",
 	"main_file": "main.lua",
 	"priority": 0,
