@@ -442,7 +442,7 @@ SMODS.Joker {
         badges[#badges + 1] = create_badge(localize('k_l6_source_okame'), L6.C.okame, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
-        if context.joker_main and to_big(card.ability.extra.xmult) > to_big(1) then
+        if context.joker_main then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
