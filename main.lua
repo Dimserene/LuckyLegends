@@ -8,9 +8,9 @@ assert(SMODS.load_file('sound.lua'))()
 
 -- FUNCS/HOOKS
 
--- to_big = to_big or function (value) -- for talisman compat (legacy)
---     return value
--- end
+to_big = to_big or function (value) -- for talisman compat
+    return value
+end
 
 -- reset_game_globals
 function SMODS.current_mod.reset_game_globals(run_start)
