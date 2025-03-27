@@ -28,11 +28,11 @@ SMODS.Joker{
 
     calculate = function(self, card, context)
         if context.before and G.GAME.current_round.hands_played == 0 and context.scoring_name == G.GAME.current_round.l6_dex.hand and not context.blueprint then
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+            card.ability.extra.xmult = to_big(card.ability.extra.xmult) + to_big(card.ability.extra.xmult_mod)
             return{
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
             }
-        elseif context.joker_main and card.ability.extra.xmult > to_big(1) then
+        elseif context.joker_main and to_big(card.ability.extra.xmult) > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
@@ -198,7 +198,7 @@ SMODS.Joker{
                 local hits = 0
                 for _, v in ipairs(context.cards) do
                     if not (v == true) and v:get_id() == 11 then
-                        card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+                        card.ability.extra.xmult = to_big(card.ability.extra.xmult) + to_big(card.ability.extra.xmult_mod)
                         hits = hits + 1
                     end
                 end
@@ -209,7 +209,7 @@ SMODS.Joker{
                     }
                 end
             end
-        elseif context.joker_main and card.ability.extra.xmult > to_big(1) then
+        elseif context.joker_main and to_big(card.ability.extra.xmult) > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
@@ -286,12 +286,12 @@ SMODS.Joker{
     calculate = function(self, card, context)
         if context.l6_base_changed and not context.blueprint and not context.repetition then
             if context.l6_other_card.id and context.l6_other_card.id == 12 and context.l6_old_card.id and not (context.l6_old_card.id == 12) then -- changing a queen into a queen shouldn't count
-                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+                card.ability.extra.xmult = to_big(card.ability.extra.xmult) + to_big(card.ability.extra.xmult_mod)
                 return{
                     message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
                 }
             end
-        elseif context.joker_main and card.ability.extra.xmult > to_big(1) then
+        elseif context.joker_main and to_big(card.ability.extra.xmult) > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
@@ -360,7 +360,7 @@ SMODS.Joker {
         badges[#badges + 1] = create_badge(localize('k_l6_source_oc'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
-        if context.joker_main and card.ability.extra.xmult > to_big(1) then
+        if context.joker_main and to_big(card.ability.extra.xmult) > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.extra.xmult}}
@@ -368,7 +368,7 @@ SMODS.Joker {
         elseif context.destroy_card and context.cardarea == G.play and not context.blueprint then
             if context.destroy_card.config.center == G.P_CENTERS.m_steel or context.destroy_card.config.center == G.P_CENTERS.m_gold then
                 card.ability.extra.upgraded = true
-                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+                card.ability.extra.xmult = to_big(card.ability.extra.xmult) + to_big(card.ability.extra.xmult_mod)
                 return {
                     remove = true
                 }
@@ -413,7 +413,7 @@ SMODS.Joker {
             if not (context.l6_joker_added == card) then
                 local mod = context.l6_joker_added.config.center.mod
                 if mod and mod.id == 'luckylegends' then
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+                    card.ability.extra.xmult = to_big(card.ability.extra.xmult) + to_big(card.ability.extra.xmult_mod)
                     return {
                         message = localize('k_l6_alexia_upgrade')
                     }
@@ -505,7 +505,7 @@ SMODS.Joker {
         badges[#badges + 1] = create_badge(localize('k_l6_source_ocpoke'), L6.C.secondary, G.C.WHITE, 0.8)
     end,
     calculate = function(self, card, context)
-        if context.joker_main and card.ability.extra.xmult > to_big(1) then
+        if context.joker_main and to_big(card.ability.extra.xmult) > to_big(1) then
             return {
                 Xmult_mod = card.ability.extra.xmult,
                 message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
@@ -520,9 +520,9 @@ SMODS.Joker {
                     hearts = hearts + 1
                 end
             end
-            card.ability.extra.xmult = 1 + (hearts * card.ability.extra.xmult_mod)
+            card.ability.extra.xmult = to_big(1) + to_big((hearts * card.ability.extra.xmult_mod))
         else
-            card.ability.extra.xmult = 1
+            card.ability.extra.xmult = to_big(1)
         end
     end
 }
