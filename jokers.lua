@@ -148,7 +148,7 @@ SMODS.Joker{
         elseif context.selling_self and card.ability.extra.rounds >= card.ability.extra.threshold and not context.blueprint then
             
             for i = 1, 2, 1 do
-                if #G.jokers.cards <= G.jokers.config.card_limit then 
+                if #G.jokers.cards < G.jokers.config.card_limit then 
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             SMODS.add_card({set = 'Joker', area = G.jokers, legendary = true})
@@ -309,7 +309,7 @@ SMODS.Joker{
     atlas = "LLJoker",
     pos = {x = 0, y = 2},
     soul_pos = {x = 0, y = 3},
-    config = { extra = { retriggers = 2 }},
+    config = { extra = { retriggers = 2, odds = 5 }},
     rarity = 4,
     cost = 20,
     blueprint_compat = true,
@@ -318,7 +318,7 @@ SMODS.Joker{
         info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
         info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
         return {
-            vars = { card.ability.extra.retriggers, colours = {G.C.DARK_EDITION} } 
+            vars = { card.ability.extra.retriggers, G.GAME.probabilities.normal or 1, card.ability.extra.odds, colours = {G.C.DARK_EDITION} } 
         }
     end,
 
@@ -334,6 +334,22 @@ SMODS.Joker{
                     repetitions = card.ability.extra.retriggers,
                     card = context.other_card
                 }
+            end
+        elseif context.individual and context.cardarea == G.play and not context.repetition then
+            if not context.other_card.edition or not context.other_card.edition.polychrome then
+                if pseudorandom('molly_poly') < (G.GAME.probabilities.normal / card.ability.extra.odds) then
+
+                    local pcard = context.other_card
+
+                    G.E_MANAGER:add_event(Event({
+                        func = function ()
+                            pcard:set_edition('e_polychrome', true)
+                            return true
+                        end
+                    }))
+                    
+                    SMODS.calculate_effect({message = localize('k_l6_molly_polychrome')}, card)
+                end
             end
         end
     end
