@@ -349,7 +349,6 @@ SMODS.Joker{
                     }))
                     
                     SMODS.calculate_effect({message = localize('k_l6_molly_polychrome')}, card)
-                    SMODS.calculate_effect({Xmult_mod = 1.5, sound = 'polychrome1', message = localize { type = 'variable', key = 'a_xmult', vars = { 1.5 } }}, pcard)
                 end
             end
         end
