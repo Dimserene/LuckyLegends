@@ -65,9 +65,10 @@ return {
             j_l6_luckylegends_molly = {
                 name = "Molly",
                 text = {
-                    "{V:1}Holographic{} and {V:1}Polychrome{}",
-                    "{C:attention}playing cards{} are retriggered",
-                    "{C:attention}#1#{} additional times",
+                    "Retriggers {V:1}Holographic{} and",
+                    "{V:1}Polychrome{} cards {C:attention}#1#{} times",
+                    "{C:green}#2#{} in {C:green}#3#{} chance to add",
+                    "{V:1}Polychrome{} to scored cards",
                     "{s:0.8,C:inactive}Young, wild, and queer!"
                 }
             },
@@ -219,6 +220,7 @@ return {
             k_l6_zach_safe = 'Nah.',
             k_l6_alexia_upgrade = 'Friend!',
             k_l6_chris_spawn_fool = 'Take this!',
+            k_l6_molly_polychrome = 'Shiny!',
 
             k_l6_active = 'Active',
             k_l6_inactive = 'Inactive'
