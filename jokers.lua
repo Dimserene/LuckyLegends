@@ -148,7 +148,7 @@ SMODS.Joker{
         elseif context.selling_self and card.ability.extra.rounds >= card.ability.extra.threshold and not context.blueprint then
             
             for i = 1, 2, 1 do
-                if #G.jokers.cards <= G.jokers.config.card_limit then 
+                if #G.jokers.cards < G.jokers.config.card_limit then 
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             SMODS.add_card({set = 'Joker', area = G.jokers, legendary = true})
